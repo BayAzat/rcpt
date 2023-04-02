@@ -1,18 +1,16 @@
-name: Postman Tests
+name: Test Postman Collection
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - uses: postmanlabs/postman-action@v1
-      with:
-           api_key: ${{ secrets.POSTMAN_API_KEY }}
-           collection: https://github.com/BayAzat/rcpt/blob/main/.github/workflows/22818271-fae759ee-2adc-41a8-8730-03552a29d60f.json
+    - name: Install Newman
+      run: npm install -g newman
+    - name: Run Postman tests
+      run: newman run https://github.com/BayAzat/rcpt/blob/main/Recipetoria.postman_collection.json --environment https://github.com/BayAzat/rcpt/blob/main/rec_railway_azat.postman_environment.json
