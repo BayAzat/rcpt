@@ -14,5 +14,4 @@ jobs:
     - uses: actions/checkout@v2
     - uses: postmanlabs/postman-action@v1
       with:
-        api_key: ${{ secrets.POSTMAN_API_KEY }}
-        collection: https://drive.google.com/file/d/1ZnpKEPXo8WyrzzSQs4AmaN1BvrScdl_Q/view?usp=sharing
+           collection: https://drive.google.com/file/d/1ZnpKEPXo8WyrzzSQs4AmaN1BvrScdl_Q/view?usp=sharing
