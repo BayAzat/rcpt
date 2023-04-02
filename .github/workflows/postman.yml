@@ -15,4 +15,4 @@ jobs:
     - uses: postmanlabs/postman-action@v1
       with:
            api_key: ${{ secrets.POSTMAN_API_KEY }}
-           collection: 24371688-803c9bf5-2198-41b4-a300-4dff364a641d
+           collection: https://github.com/BayAzat/rcpt/blob/main/.github/workflows/22818271-fae759ee-2adc-41a8-8730-03552a29d60f.json
