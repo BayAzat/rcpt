@@ -15,4 +15,4 @@ jobs:
     - uses: postmanlabs/postman-action@v1
       with:
         api_key: ${{ secrets.POSTMAN_API_KEY }}
-        collection: https://www.postman.com/gold-star-384207/workspace/recipetoria/collection/24371688-803c9bf5-2198-41b4-a300-4dff364a641d?action=share&creator=26689892
+        collection: https://www.postman.com/warped-comet-548845/workspace/rcpt/collection/26687611-b306ba01-4fc6-42fd-947e-1982c00f472d?action=share&creator=26687611
