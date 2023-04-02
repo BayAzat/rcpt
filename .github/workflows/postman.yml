@@ -15,4 +15,4 @@ jobs:
     - uses: postmanlabs/postman-action@v1
       with:
         api_key: ${{ secrets.POSTMAN_API_KEY }}
-        collection: 26687611-b306ba01-4fc6-42fd-947e-1982c00f472
+        collection: https://drive.google.com/file/d/1ZnpKEPXo8WyrzzSQs4AmaN1BvrScdl_Q/view?usp=sharing
