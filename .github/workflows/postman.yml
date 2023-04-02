@@ -13,4 +13,4 @@ jobs:
     - name: Install Newman
       run: npm install -g newman
     - name: Run Postman tests
-      run: newman run https://github.com/BayAzat/rcpt/blob/main/Recipetoria.postman_collection.json --environment https://github.com/BayAzat/rcpt/blob/main/rec_railway_azat.postman_environment.json
+      run: newman run tests/Recipetoria.postman_collection.json --environment tests/rec_railway_azat.postman_environment.json
