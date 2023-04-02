@@ -13,4 +13,4 @@ jobs:
     - name: Install Newman
       run: npm install -g newman
     - name: Run Postman tests
-      run: newman run "https://api.getpostman.com/collections/$24371688-803c9bf5-2198-41b4-a300-4dff364a641d?apikey=$apiKey" \ --environment "https://api.getpostman.com/environments/$24371688-803c9bf5-2198-41b4-a300-4dff364a641d?apikey=$apiKey"
+      run: newman run "https://api.getpostman.com/collections/$24371688-803c9bf5-2198-41b4-a300-4dff364a641d?apikey=$PMAK-6429b97800c08413f6e7ab26-a4581caa06e181a2f7d64596d9e121de12" \ --environment "https://api.getpostman.com/environments/$24371688-803c9bf5-2198-41b4-a300-4dff364a641d?apikey=$PMAK-6429b97800c08413f6e7ab26-a4581caa06e181a2f7d64596d9e121de12"
