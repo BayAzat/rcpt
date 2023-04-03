@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "803c9bf5-2198-41b4-a300-4dff364a641d",
+		"_postman_id": "b306ba01-4fc6-42fd-947e-1982c00f472d",
 		"name": "Recipetoria",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26689892"
+		"_exporter_id": "26687611"
 	},
 	"item": [
 		{
@@ -11,45 +11,12 @@
 			"item": [
 				{
 					"name": "register",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"console.clear();\r",
-									"let response = pm.response.json();\r",
-									"\r",
-									"let requestBody = JSON.parse(pm.request.body.raw);\r",
-									"pm.environment.set(\"name\", requestBody.name);\r",
-									"pm.environment.set(\"email\", requestBody.email);\r",
-									"pm.environment.set(\"password\", requestBody.password);\r",
-									"\r",
-									"pm.environment.set(\"token\", response.token);\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\"\n}",
+							"raw": "{\n    \"name\": \"Nikolai Khriapov\",\n    \"email\": \"kolyakhryapov@gmail.com\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,10 +24,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/auth/register",
+							"raw": "localhost:8080/api/v1/auth/register",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -70,418 +38,15 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "ApplicationUser",
-			"item": [
-				{
-					"name": "Create ingredient client",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomWords}}\",\n    \"amount\": {{$randomInt}},\n    \"measurementUnit\": \"KG\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/client",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"client"
-							]
-						}
-					},
-					"response": []
 				},
 				{
-					"name": "get all ingredients",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v1/client",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"client"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Ingredient",
-			"item": [
-				{
-					"name": "create ingredient",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"let requestBody = JSON.parse(pm.request.body.raw);\r",
-									"pm.environment.set(\"ingrName\", requestBody.name);\r",
-									"pm.environment.set(\"ingrAmount\", requestBody.amount);\r",
-									"pm.environment.set(\"measurementUnit\", requestBody.measurementUnit);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomProductName}}\",\n    \"amount\": {{$randomInt}},\n    \"measurementUnit\": \"KG\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/client/ingredients",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"client",
-								"ingredients"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all ingredients",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v1/client/ingredients",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"client",
-								"ingredients"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update Ingredient by ID",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomProductName}}\",\n    \"amount\": {{$randomInt}},\n    \"measurementUnit\": \"KG\",\n    \"shoppingList\": null\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v1/client/ingredients/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"client",
-								"ingredients",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get ingredient by ID",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"The ingredient was updated\", function () {    \r",
-									"    let nameOrigin = pm.environment.get(\"ingrName\");\r",
-									"    let nameUpd = pm.environment.get(\"ingrNameUpd\");\r",
-									"\r",
-									"    pm.expect(nameUpd).is.not.eql(nameOrigin);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"The amount was updated\", function () {    \r",
-									"    let amountOrigin = pm.environment.get(\"ingrAmount\");\r",
-									"    let amountUpd = pm.environment.get(\"ingrAmountUpd\");\r",
-									"\r",
-									"    pm.expect(amountUpd).is.not.eql(amountOrigin);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v1/client/ingredients/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"client",
-								"ingredients",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete ingredient by ID",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.environment.unset(\"ingrName\");\r",
-									"pm.environment.unset(\"ingrAmount\");\r",
-									"pm.environment.unset(\"measurementUnit\");\r",
-									"pm.environment.unset(\"ingrNameUpd\");\r",
-									"pm.environment.unset(\"ingrAmountUpd\");\r",
-									"pm.environment.unset(\"measurementUnitUpd\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v1/client/ingredients/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"client",
-								"ingredients",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{id}}"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Not used",
-			"item": [
-				{
-					"name": "(not used) authenticate",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
+					"name": "authenticate",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+							"raw": "{\n    \"email\": \"kolyakhryapov@gmail.com\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -489,10 +54,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/auth/authenticate",
+							"raw": "localhost:8080/api/v1/auth/authenticate",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -504,36 +70,6 @@
 					"response": []
 				}
 			]
-		}
-	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "{{token}}",
-				"type": "string"
-			}
-		]
-	},
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
 		}
 	]
 }
