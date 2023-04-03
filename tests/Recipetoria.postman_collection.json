@@ -24,11 +24,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/auth/register",
+							"raw": "{{url}}/api/v1/auth/register",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -54,11 +53,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/v1/auth/authenticate",
+							"raw": "{{url}}/api/v1/auth/authenticate",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
