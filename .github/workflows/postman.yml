@@ -1,19 +1,16 @@
-name: Postman Tests
+name: Test Postman Collection
 
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - uses: postmanlabs/postman-action@v1
-      with:
-        api_key: ${{ secrets.POSTMAN_API_KEY }}
-        collection: 803c9bf5-2198-41b4-a300-4dff364a641d
-        environment: 40e995b5-5f6b-4f0a-af3a-c1dfa184c497?apikey=PMAK-642b0897fe492c24f4708e5d-94f6e1dd50fd2a4c545b59eb663eaded73
+    - name: Install Newman
+      run: npm install -g newman
+    - name: Run Postman tests
+      run: newman run "https://api.getpostman.com/collections/24371688-803c9bf5-2198-41b4-a300-4dff364a641d?apikey=PMAK-642b0897fe492c24f4708e5d-94f6e1dd50fd2a4c545b59eb663eaded73" --environment "https://api.getpostman.com/environments/40e995b5-5f6b-4f0a-af3a-c1dfa184c497?apikey=PMAK-642b0897fe492c24f4708e5d-94f6e1dd50fd2a4c545b59eb663eaded73"
